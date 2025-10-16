@@ -16,6 +16,17 @@ Each 'card' is populated from the DB and using a simple LINQ query, sorted to sh
 
 ## Aircraft Recognition Quiz (Recognise.razor)
 
+This page is a re-engineer of the first JHub module I completed to showcase my understanding of basic HTML, CSS and JS. Here, it is really written in C# and Blazor. it is still raw in form - if you continually select the correct answer it will increment! 
+
+## UK Police Data (Richweb1b.razor)
+
+This is module 1b of a JHub exercise, using open API to provide 'live' data. using the UK Police API, you are able to visually display a boundary within a specified Police force and, through a table view crime data that isnt location tagged. 
+
+The aspiration was to create a visual representation of all crimes and locations through the open maps API. however the geo data for each police force was too great for the request so kept failing. A future option could be to square off the boundaries and reduce the lat long data at the cost of reduced accuracy. 
+
+## Other pages.
+
+As the application grows I will aim to show off more elements within .Net and my skill in its use. I predominantly work from text book and seek to understand the code rather than follow the current trend of vibe coding. 
 
 ## Built with:
 
