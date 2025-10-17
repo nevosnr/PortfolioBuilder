@@ -26,9 +26,13 @@
         <MudDivider DividerType="DividerType.Middle" />
         <MudNavMenu Color="Color.Primary">
             <MudNavLink Match="NavLinkMatch.All" Href="" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-            <MudNavLink Match="NavLinkMatch.All" Href="" Icon="@Icons.Material.Filled.Girl">Python</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href=@_snackURL Icon="@Icons.Material.Filled.Code">React Native in Expo</MudNavLink>
             <MudNavLink Match="NavLinkMatch.All" Href="/about" Icon="@Icons.Material.Filled.DocumentScanner">David Neve - CV</MudNavLink>
-            <MudNavLink Match="NavLinkMatch.All" Href="" Icon="@Icons.Material.Filled.Gamepad">Video Game Development</MudNavLink>
+            <MudNavGroup Title="Video Game Dev Links">
+                <MudNavLink Match="NavLinkMatch.All" Href="/gamedev" Icon="@Icons.Material.Filled.Games">Overview</MudNavLink>
+                <MudNavLink Match="NavLinkMatch.All" Target="_blank" Href="https://play.unity.com/en/games/a3534c3f-cf9b-4113-8835-a592e9ce4d04/lego-microgame-ninjago-lashas-revenge" Icon="@Icons.Material.Filled.Gamepad">Lego Ninjago - One Click</MudNavLink>
+                <MudNavLink Match="NavLinkMatch.All" Target="_blank" Href="https://gamedev.net/blogs/blog/9454-revolt-of-the-machines/" Icon="@Icons.Material.Filled.Gamepad">Revolt of the Machines (Working Title) Blog</MudNavLink>
+            </MudNavGroup>
             <MudDivider DividerType="DividerType.Middle" />
             <MudNavGroup Title="MOD JHub Scheme Modules">
                 <MudNavLink Match="NavLinkMatch.All" Href="/recognise" Icon="@Icons.Material.Filled.AirplanemodeActive">JHub Module 1a - Basic Web</MudNavLink>
