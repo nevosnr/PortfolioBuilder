@@ -1,4 +1,9 @@
-﻿@using PortfolioBuilder.Components
+﻿@using Microsoft.EntityFrameworkCore
+@using PortfolioBuilder.Components
+@using PortfolioBuilder.Data
+@using PortfolioBuilder.Data.DTOs.CareerDTOs
+
+@inject IDbContextFactory<PortfolioDbContext> DbContextFactory
 
 @page "/about"
 
@@ -6,95 +11,25 @@
 
 <MudText Align="Align.Center" Typo="Typo.h4">Everything You Need to Know About Dave Neve</MudText>
 <MudGrid>
-	<MudItem xs="6">
+	<MudItem xs="12">
 		<MudTimeline>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">Feb 2002</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Royal Air Force Halton</MudText>
-					<MudText>7 Weeks of Basic Trade Training at RAF Halton.</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">April 2002</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Royal Air Force Cosford</MudText>
-					<MudText>Professional Trade Training as Eng Tech EL (Trade Group 3)</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">October 2003</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Royal Air Force Cottesmore</MudText>
-					<MudText>First Assignment was into Ground Radio - as a maintenance technician looking after Ground to Air communications and navigational aids..</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">August 2010</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>NCIA Mons</MudText>
-					<MudText>NATO posting in Belgium as a network manager and fibre optic installation technician</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">August 2012</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Royal Air Force High Wycombe</MudText>
-					<MudText>Employed with 90SU 5Sqn detachment as an Oracle DBA</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">July 2014</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Northwood HQ</MudText>
-					<MudText>Employed at PJHQ as a systems watchkeep intially and then move to Video Conferencing</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">Jul 2018</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Royal Air Force Cosford</MudText>
-					<MudText>Employed as a Phase 2 instructor teaching Python and Linux fundamentals and then on promotion employed as a T101 RADAR instructor</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-			<MudTimelineItem Color="Color.Info" Size="Size.Small">
-				<ItemOpposite>
-					<MudText Color="Color.Info" Typo="Typo.h5">July 2022</MudText>
-				</ItemOpposite>
-				<ItemContent>
-					<MudText>Royal Air Force Coningsby</MudText>
-					<MudText>As SNCO IxTS, I led a team of Cyberspace professionals ranging from network engineering, server administration and software devleopment.</MudText>
-				</ItemContent>
-			</MudTimelineItem>
-		</MudTimeline>
-	</MudItem>
-	<MudItem xs="6">
-		<MudTimeline>
-			<MudTimelineItem Color="Color.Warning" Size="Size.Medium" Elevation="25">
-				<ItemOpposite>
-					<MudGrid Class="pa-5">
-						<MudIcon Color="Color.Default" Icon="@Icons.Material.Filled.MilitaryTech"/>
-						<MudText Color="Color.Error" Typo="Typo.h5">Dec 2025</MudText>
-					</MudGrid>
-				</ItemOpposite>
-				<ItemContent>
-					<CareerCard/>
-				</ItemContent>
-			</MudTimelineItem>
+			@foreach (var career in _careerRecordDTOs)
+			{
+				<MudTimelineItem Color="Color.Warning" Size="Size.Medium" Elevation="25">
+					<ItemOpposite>
+						<MudGrid Class="pa-5">
+							<MudIcon Color="Color.Default" Icon="@career._careerIcon"/>
+							<MudText Color="Color.Error" Typo="Typo.h5">@career._careerStartDate.ToString("MMM yyyy")</MudText>
+						</MudGrid>
+					</ItemOpposite>
+					<ItemContent>
+						<CareerCard 
+							_careerJobTitle="@(career._careerJobTitle)" 
+							_careerRoleTitle="@(career._careerRoleTitle)" 
+							_careerShortDescription="@(career._careerShortDescription)" />
+					</ItemContent>
+				</MudTimelineItem>
+			}
 		</MudTimeline>
 	</MudItem>
 </MudGrid>
@@ -102,4 +37,26 @@
 
 @code {
 
+	private List<CareerRecordDTO> _careerRecordDTOs = new();
+	private PortfolioDbContext _ctx = default!;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await using var _ctx = DbContextFactory.CreateDbContext();
+
+		_careerRecordDTOs = await _ctx.CareerRecords
+			.AsNoTracking()
+			.OrderByDescending(c => c.careerStateDate)
+			.Select(c => new CareerRecordDTO
+			{
+				_Id = c.Id,
+				_careerJobTitle = c.careerJobTitle,
+				_careerRoleTitle = c.careerRoleTitle,
+				_careerShortDescription = c.careerShortDescription,
+				_careerStartDate = c.careerStateDate,
+				_careerEndDate = c.careerEndDate,
+				_careerLongDescription = c.careerLongDescription
+			})
+			.ToListAsync();
+	}
 }

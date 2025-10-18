@@ -3,14 +3,15 @@
 namespace PortfolioBuilder.Data.DTOs.CareerDTOs
 {
     public record CareerRecordDTO
-    (
-        int _Id,
-        string? _careerIcon,
-        string? _careerJobTitle,
-        string? _careerRoleTitle,
-        string? _careerShortDescription,
-        string? _careerLongDescription,
-        DateTime _careerStartDate,
-        DateTime? _careerEndDate
-    );
+    {
+        public Guid _Id { get; init; }
+        public string? _careerIcon { get; init; }
+        public string? _careerJobTitle { get; init; }
+        public string? _careerRoleTitle { get; init; }
+        public string? _careerShortDescription { get; init; }
+        public string? _careerLongDescription { get; init; }
+        public DateTime _careerStartDate { get; init; }
+        public DateTime? _careerEndDate { get; init; }
+
+    };
 }
