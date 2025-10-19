@@ -1,17 +1,17 @@
 ﻿<MudCard Outlined="true" Elevation="25">
 	<MudCardHeader>
 		<CardHeaderAvatar>
-			<MudIcon Icon="@_careerIcon" Size="Size.Medium"/>
+			<MudIcon Icon="@careerRecord._careerIcon" Size="Size.Medium" />
 		</CardHeaderAvatar>
 		<CardHeaderContent>
-			<MudText Typo="Typo.body1">@_careerJobTitle</MudText>
-			<MudText Typo="Typo.body2">@_careerRoleTitle</MudText>
+			<MudText Typo="Typo.body1">@careerRecord._careerJobTitle</MudText>
+			<MudText Typo="Typo.body2">@careerRecord._careerRoleTitle</MudText>
 		</CardHeaderContent>
 		<CardHeaderActions>
 			<MudIconButton Icon="@Icons.Material.Filled.ReadMore" Color="Color.Default" Size="Size.Medium" OnClick="@(() => ViewJob())"/>
 		</CardHeaderActions>
 	</MudCardHeader>
 	<MudCardContent>
-		<MudText Typo="Typo.body2">@_careerShortDescription</MudText>
+		<MudText Typo="Typo.body2">@careerRecord._careerShortDescription</MudText>
 	</MudCardContent>
 </MudCard>

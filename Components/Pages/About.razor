@@ -12,6 +12,11 @@
 <MudText Align="Align.Center" Typo="Typo.h4">Everything You Need to Know About Dave Neve</MudText>
 <MudGrid>
 	<MudItem xs="12">
+		<MudText Typo="Typo.body1">You may find when accessing this element of the website that you will have to refresh the screen. It is likely that the Azure SQL that the data originates has been paused and so will return an error.
+			I am in the process of writing a try, catch for this eventualltiy. for the time being, refreshing the page should resolve this issue.
+		</MudText>
+	</MudItem>
+	<MudItem xs="12">
 		<MudTimeline>
 			@foreach (var career in _careerRecordDTOs)
 			{
@@ -23,10 +28,8 @@
 						</MudGrid>
 					</ItemOpposite>
 					<ItemContent>
-						<CareerCard 
-							_careerJobTitle="@(career._careerJobTitle)" 
-							_careerRoleTitle="@(career._careerRoleTitle)" 
-							_careerShortDescription="@(career._careerShortDescription)" />
+						<CareerCard
+							careerRecord ="@career"/>
 					</ItemContent>
 				</MudTimelineItem>
 			}
@@ -50,6 +53,7 @@
 			.Select(c => new CareerRecordDTO
 			{
 				_Id = c.Id,
+				_careerIcon = c.careerIcon,
 				_careerJobTitle = c.careerJobTitle,
 				_careerRoleTitle = c.careerRoleTitle,
 				_careerShortDescription = c.careerShortDescription,
