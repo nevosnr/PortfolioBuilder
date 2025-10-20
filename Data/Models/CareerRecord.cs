@@ -25,5 +25,7 @@ namespace PortfolioBuilder.Data.Models
         [Required]
         public DateTime careerStateDate { get; set; }
         public DateTime? careerEndDate { get; set; }
+
+        public ICollection<SkillsRecord>? skills { get; set; }
     }
 }

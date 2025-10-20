@@ -10,6 +10,7 @@ namespace PortfolioBuilder.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Name=AzurePortfolio");
         public virtual DbSet<Models.CareerRecord> CareerRecords { get; set; }
+        public virtual DbSet<Models.SkillsRecord> SkillsRecords { get; set; }
         protected override void OnModelCreating(ModelBuilder model)
         {
             model.Entity<Models.CareerRecord>(entity =>
@@ -23,6 +24,21 @@ namespace PortfolioBuilder.Data
                 entity.Property(e => e.careerLongDescription).IsRequired();
                 entity.Property(e => e.careerStateDate).IsRequired();
                 entity.Property(e => e.careerEndDate);
+            });
+
+            model.Entity<Models.SkillsRecord>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                entity.Property(e => e.skillTitle).HasMaxLength(255);
+                entity.Property(e => e.skillDescription).HasMaxLength(1000);
+                entity.Property(e => e.skillProvider).HasMaxLength(255);
+                entity.Property(e => e.skillDateAchieved);
+                entity.HasOne(d => d.careerRecord)
+                    .WithMany(p => p.skills)
+                    .HasForeignKey(d => d.careerRecordId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_SkillsRecord_CareerRecord");
             });
             OnModelCreatingPartial(model);
         }

@@ -1,9 +1,25 @@
-﻿<MudDialog>
+﻿<MudDialog Class="pa-10">
 	<DialogContent>
-		<MudText Typo="Typo.h5">@careerRecord._careerRoleTitle</MudText>
+		<MudCard Elevation="15">
+			<MudCardHeader>
+				<CardHeaderContent>
+					<MudText Typo="Typo.h5">@careerRecord._careerRoleTitle</MudText>
+				</CardHeaderContent>
+			</MudCardHeader>
+			<MudDivider/>
+			<MudCardContent>
+				<MudPaper Class="pa-5 mb-5" Elevation="15">
+					<MudGrid>
+						<MudItem xs="4" sm="4">
+
+						</MudItem>
+					</MudGrid>
+
+				</MudPaper>
+			</MudCardContent>
+		</MudCard>
 		<MudText Typo="Typo.body2">@careerRecord._careerLongDescription</MudText>
 	</DialogContent>
-
 </MudDialog>
 
 
