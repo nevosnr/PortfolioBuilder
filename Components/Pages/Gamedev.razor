@@ -1,8 +1,12 @@
 ﻿@page "/gamedev"
 
-<MudText Typo="Typo.h4">Video Game Development</MudText>
+<PageTitle>Video Game Development Overview</PageTitle>
 
-<MudText Typo="Typo.body1"> Links have been provided in the menu to demonstrate a previous project - the One click Lego Ninjago game and my current passion project.
+
+<MudText Class="pa-10" GutterBottom="true" Align="Align.Center" Typo="Typo.h4">Video Game Development</MudText>
+
+<MudText Class="pa-2" Typo="Typo.body1">
+	Links have been provided in the menu to demonstrate a previous project - the One click Lego Ninjago game and my current passion project.
 
 </MudText>
 
@@ -23,9 +27,48 @@
 			</div>
 	</MudCarouselItem>
 </MudCarousel> 
-<MudText>
-	this element is a placeholder
+<MudDivider />
+<MudText Class="pa-5" Typo="Typo.h5">The Passion Project</MudText>
+<MudText Class="pa-10">
+	Game development started during the COVID lockdown in 2020. At the time there was a brief pause in training during which I looked into otherscripting languages initially 
+	where I could create compoarisons between what I was teaching in Python and other languages. At the time Unreal Engine and Unity were everywhere and there was a big push from both companies by release learning material for free.
+	Due to hardware constraints and the ease of the C# language (and the Unity UI seemed more approachable) I started to learn Unity. Here I began with basic tutorials and gradually ventured into more intermediate subjects. such as;
+	<ul class="pa-5 mx-5 ">
+		<li>Event based exectution - interactable items are wide ranging.</li>
+		<li>Basic AI programming - simple decision making and behaviour trees.</li>
+		<li>Multiple scence/project interaction - reducing the need for explicit singleton use.</li>
+		<li>Scripting - Ranging from character movement scripting, interaction through event-driven principles.</li>
+		<li>UI Design - both using the traditional Unity method of GameObjects and UI Toolkit which is XML/CSS based.</li>
+		<li>Game Cinematics and asset management.</li>
+	</ul>
 </MudText>
+
+
+<MudImage src="images/continuescreen.gif" alt="" style="width:100%; height:auto;" />
+<MudDivider />
+<MudText Class="pa-5" Typo="Typo.h5">The Released Project</MudText>
+<MudText Class="pa-10">
+	My first 'released' game was for a promotional competition that Unity ran with Lego. They released the Ninjago assets in Unity 2020 showcasing node-like programming capabilities with the lego block based system. Building on Scratch in
+	some respects. this enabled rapid protoyping with a familiar scene for kids (and adults!). The competition was to create an engaging one-buttom game, the winner of which would have thier game in Lego stores as well as a great haul of
+	lego goodies! I didn't win in the end!
+</MudText>
+<MudCarousel TData="object" Class="mud-width-full" Style="width:100%; height:480px;" ShowArrows="true" ShowBullets=true>
+	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+		<div class="d-flex" style="height:100%">
+			<MudImage src="images/ninjago_3.png" alt="" style="width:100%; height:auto;" />
+		</div>
+	</MudCarouselItem>
+	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+		<div class="d-flex" style="height:100%">
+			<MudImage src="images/ninjago_2.png" alt="" style="width:100%; height:auto;" />
+		</div>
+	</MudCarouselItem>
+	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+		<div class="d-flex" style="height:100%">
+			<MudImage src="images/ninjago_1.png" alt="" style="width:100%; height:auto;" />
+		</div>
+	</MudCarouselItem>
+</MudCarousel>
 
 @code {
 
