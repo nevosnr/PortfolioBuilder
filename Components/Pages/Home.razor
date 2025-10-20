@@ -1,19 +1,32 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>David Neve</PageTitle>
 
-<MudText Typo="Typo.h3">Welcome to my Portfolio Site</MudText>
+<MudText Class="pa-5" Align="Align.Center" Typo="Typo.h3">Welcome to my Portfolio Site</MudText>
 
-<MudPaper Elevation="2">
+<MudPaper Class="pa-5" Elevation="2">
 	<MudText Typo="Typo.body1">
-		This portfolio site is built using Blazor WebAssembly and MudBlazor components. This site is ever evolving
-		as I learn new skills and technologies. so I welcome you to revisit from time to time to see whats changed.
+		This 'portfolio' site aims to showcase my developing skills in the C# ecosystem as well as other projects that have piqued my interest in the past.
+		I am focusing my skillset in C# at present as future me will be exploring opportunites in enterprise development where the microsoft ecosystem in found in abundance.
+		Through academic study and personal projects (including the MOD JHub scheme) I have built an awareness of many programming langauges including
+	</MudText>
+	<MudText Class="pa-5">
+		<ul>
+			<li>Python 2.7 and 3.x - through my current assignment and that of instructor at RAF COS</li>
+			<li>Power Platform Devleoper (PowerApps, PowerBi, PowerAutomate) - through my current assignment</li>
+			<li>JAVA - through the Software Architecture Module for BSc(Hons) Computer Science</li>
+			<li>React Native - through the Mobile Computing Module for BSc(Hons) Computer Science</li>
+			<li>C# and .NET Core - through the Final Project Module for BSc(Hons) Computer Science</li>
+			<li>ROS2 and Python - through the Robotics Module for BSc(Hons) Computer Science</li>
+			<li>Unity 6 Game Engine - A personal journey started during the COVID lockdown</li>
+			<li>PL/SQL - through previous assignments at RAF HWC and RAF WAD</li>
+		</ul>
 	</MudText>
 </MudPaper>
-<MudPaper Elevation="3">
-	<MudText Typo="Typo.body2">
-		The core of this site is Blazor SSR combined with WebAssembly. It will showcase elements of my understanding
-		in EF Core, ASP.NET Identity as well as UI design. Back end services are hosted in Azure and include SQL Server.
-		Current professional project (Not hosted here) uses PostgreSQL for its database.
+<MudDivider/>
+<MudPaper Class="pa-5" Elevation="3">
+	<MudText Align="Align.Center" Typo="Typo.body2">
+		This is a Static Server Rendered Blazor application with interactive server elements where required for operation.  It exploits .Net 9 with .Net Identity, EF Core and MudBlazor UI component library.
+		The backend is also hosted on Azure as a serverless SQL database instance.
 	</MudText>
 </MudPaper>

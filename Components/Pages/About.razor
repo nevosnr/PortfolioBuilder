@@ -9,58 +9,47 @@
 
 <PageTitle>All about Dave Neve</PageTitle>
 
-<MudText Align="Align.Center" Typo="Typo.h4">Everything You Need to Know About Dave Neve</MudText>
+<MudText Class="pa-10" Align="Align.Center" Typo="Typo.h4">Everything You Need to Know About Dave Neve</MudText>
 <MudGrid>
 	<MudItem xs="12">
-		<MudText Typo="Typo.body1">You may find when accessing this element of the website that you will have to refresh the screen. It is likely that the Azure SQL that the data originates has been paused and so will return an error.
-			I am in the process of writing a try, catch for this eventualltiy. for the time being, refreshing the page should resolve this issue.
+		<MudText Typo="Typo.body1">
+			This timeline content is hosted on an Azure SQL Database and through adopting a code-first design in .NET and Entity Framework, the DB was created in C#. Previous projects have adopted a Database-first approach which is 
+			more relevant in enterprsie/industry as a datbase noramlly already exists. That being said I am able to develop in SQL, and create Tables, Views and stored procedures as required. 
+			<br />
+			As the timeline is hosted on Azure (on the free tier) there may be a delay in record retrival as the DB may have been placed in a paused state. The backend is programmed to retry 5 times in 15 seconds which should 
+			be ample time for the instance to run up. If not, please navigate away and return to view the results.
+			<br />
 		</MudText>
+	<MudItem xs="12">
+			<MudText Class="pa-5" Align="Align.Center" Color="Color.Error" Typo="Typo.body1"><strong>The card dialogs are still in development.</strong></MudText>
+	</MudItem>
 	</MudItem>
 	<MudItem xs="12">
-		<MudTimeline>
-			@foreach (var career in _careerRecordDTOs)
-			{
-				<MudTimelineItem Color="Color.Warning" Size="Size.Medium" Elevation="25">
-					<ItemOpposite>
-						<MudGrid Class="pa-5">
-							<MudIcon Color="Color.Default" Icon="@career._careerIcon"/>
-							<MudText Color="Color.Error" Typo="Typo.h5">@career._careerStartDate.ToString("MMM yyyy")</MudText>
-						</MudGrid>
-					</ItemOpposite>
-					<ItemContent>
-						<CareerCard
-							careerRecord ="@career"/>
-					</ItemContent>
-				</MudTimelineItem>
-			}
-		</MudTimeline>
+		@if (_isLoading)
+		{
+			<MudProgressCircular Color="Color.Primary" Indeterminate="true" Size="Size.Large" Class="ma-5" />
+		}
+		else
+		{
+			<MudTimeline>
+				@foreach (var career in _careerRecordDTOs)
+				{
+					<MudTimelineItem Color="Color.Success" Size="Size.Medium" Elevation="25">
+						<ItemOpposite>
+							<MudGrid Class="pa-5">
+								<MudIcon Color="Color.Default" Icon="@career._careerIcon"/>
+								<MudText Color="Color.Primary" Typo="Typo.h5">@career._careerStartDate.ToString("MMM yyyy")</MudText>
+							</MudGrid>
+						</ItemOpposite>
+						<ItemContent>
+							<CareerCard
+								careerRecord ="@career"/>
+						</ItemContent>
+					</MudTimelineItem>
+				}
+			</MudTimeline>			
+		}
 	</MudItem>
 </MudGrid>
 
 
-@code {
-
-	private List<CareerRecordDTO> _careerRecordDTOs = new();
-	private PortfolioDbContext _ctx = default!;
-
-	protected override async Task OnInitializedAsync()
-	{
-		await using var _ctx = DbContextFactory.CreateDbContext();
-
-		_careerRecordDTOs = await _ctx.CareerRecords
-			.AsNoTracking()
-			.OrderByDescending(c => c.careerStateDate)
-			.Select(c => new CareerRecordDTO
-			{
-				_Id = c.Id,
-				_careerIcon = c.careerIcon,
-				_careerJobTitle = c.careerJobTitle,
-				_careerRoleTitle = c.careerRoleTitle,
-				_careerShortDescription = c.careerShortDescription,
-				_careerStartDate = c.careerStateDate,
-				_careerEndDate = c.careerEndDate,
-				_careerLongDescription = c.careerLongDescription
-			})
-			.ToListAsync();
-	}
-}
