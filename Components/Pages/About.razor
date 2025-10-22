@@ -20,9 +20,16 @@
 			be ample time for the instance to run up. If not, please navigate away and return to view the results.
 			<br />
 		</MudText>
+	</MudItem>
+	<MudItem xs="12">
+		<MudCarousel TData="object" Class="mud-width-full" Style="width:150px; height:270px;" ShowArrows="true" ShowBullets=true>
+			<MudCarouselItem Transition="Transition.Slide">
+				<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="7a9a88c1-1eb0-4870-a73b-1c9c8e72ad2a" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+			</MudCarouselItem>
+		</MudCarousel>
+	</MudItem>
 	<MudItem xs="12">
 			<MudText Class="pa-5" Align="Align.Center" Color="Color.Error" Typo="Typo.body1"><strong>The card dialogs are still in development.</strong></MudText>
-	</MudItem>
 	</MudItem>
 	<MudItem xs="12">
 		@if (_isLoading)
