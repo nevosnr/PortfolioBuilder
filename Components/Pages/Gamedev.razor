@@ -10,24 +10,7 @@
 
 </MudText>
 
-<MudCarousel TData="object" Class="mud-width-full" Style="width:100%; height:480px;" ShowArrows="true" ShowBullets=true>
-	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
-		<div class="d-flex" style="height:100%">
-			<MudImage src="images/FWIW_Desktop.png" alt="" style="width:100%; height:auto;" />
-		</div>
-	</MudCarouselItem>
-		<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
-			<div class="d-flex" style="height:100%">
-				<MudImage src="images/Screenshot2024-05-03180554.png" alt="" style="width:100%; height:auto;" />
-			</div>
-		</MudCarouselItem>
-			<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
-			<div class="d-flex" style="height:100%">
-				<MudImage src="images/Screenshot2023-12-09162036.png" alt="" style="width:100%; height:auto;" />
-			</div>
-	</MudCarouselItem>
-</MudCarousel> 
-<MudDivider />
+
 <MudText Class="pa-5" Typo="Typo.h5">The Passion Project</MudText>
 <MudText Class="pa-10">
 	Game development started during the COVID lockdown in 2020. At the time there was a brief pause in training during which I looked into otherscripting languages initially 
@@ -42,7 +25,37 @@
 		<li>Game Cinematics and asset management.</li>
 	</ul>
 </MudText>
-
+<MudCarousel TData="object" Class="mud-width-full" Style="width:100%; height:480px;" ShowArrows="true" ShowBullets=true>
+	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+		<div class="d-flex" style="height:100%">
+			<MudImage src="images/FWIW_Desktop.png" alt="" style="width:100%; height:auto;" />
+		</div>
+	</MudCarouselItem>
+	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+		<div class="d-flex" style="height:100%">
+			<MudImage src="images/Screenshot2024-05-03180554.png" alt="" style="width:100%; height:auto;" />
+		</div>
+	</MudCarouselItem>
+	<MudCarouselItem Transition="Transition.Slide" Color="Color.Primary">
+		<div class="d-flex" style="height:100%">
+			<MudImage src="images/Screenshot2023-12-09162036.png" alt="" style="width:100%; height:auto;" />
+		</div>
+	</MudCarouselItem>
+</MudCarousel>
+<MudDivider />
+<MudPaper Height="480" Width="640" Style="aspect-ratio:16/9; position: relative;">
+	<div style="position: absolute; top:0;left:0;width:100%; height:100%;">
+		<iframe width="640"
+				height="480"
+				src="https://www.youtube.com/embed/jToYvMiwv0A?si=3J7Au5BaqnYG43g7"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen>
+		</iframe>
+	</div>
+</MudPaper>
 
 <MudImage src="images/continuescreen.gif" alt="" style="width:100%; height:auto;" />
 <MudDivider />
