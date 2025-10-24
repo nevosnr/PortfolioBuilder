@@ -1,0 +1,21 @@
+﻿
+@page "/calendar"
+
+<button @onclick="() => {monthsAway--; CreateMonth();}">Previous Month</button>
+<h1>@monthName, @year</h1>
+<button @onclick="() => { monthsAway++; CreateMonth(); }">Next Month</button>
+
+<section class="calendar-grid">
+	@for (int i = 0; i < numBlankColumns; i++)
+	{
+		<div></div>
+	}
+	@for (int i = 1; i <= monthEnd.Day; i++)
+	{
+		<div>@i</div>
+	}
+</section>
+
+
+
+
