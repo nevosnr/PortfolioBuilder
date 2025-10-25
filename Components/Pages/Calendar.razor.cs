@@ -2,11 +2,14 @@ namespace PortfolioBuilder.Components.Pages
 {
     public partial class Calendar
     {
+        string? textValue { get; set; } //placeholder to create form.
+        DateTime? dateValue { get; set; } //placeholder to create form.
         string monthName = "";
         DateTime monthEnd;
         int numBlankColumns = 0;
         int monthsAway = 0;
         int year;
+        DateTime monthStart;
         
         protected override void OnInitialized()
         {
@@ -15,26 +18,16 @@ namespace PortfolioBuilder.Components.Pages
 
         private void CreateMonth()
         {
-            int baseMonth = DateTime.Now.Month;
-            int baseYear = DateTime.Now.Year;
+            DateTime baseDate = DateTime.Now.AddMonths(monthsAway);
+            year = baseDate.Year;
+            int month = baseDate.Month;
 
-            int toalMonths = baseMonth -1 + monthsAway;
-            year = baseYear + (toalMonths / 12);
-            int normalizedMonth = (toalMonths % 12 +12 )% 12 +1;
-            if (year == 0)
-            {
-                year = DateTime.Now.Year;
-            }
-            int month = DateTime.Now.Month + monthsAway;
-
-            year += (month -1) /12;
-            month = ((month -1) % 12) +1;
-        
-            DateTime monthStart = new DateTime(year, normalizedMonth, 1);
+            monthStart = new DateTime(year, month, 1);
             monthEnd = monthStart.AddMonths(1).AddDays(-1);
             monthName = monthStart.ToString("MMMM");
-
             numBlankColumns = (int)monthStart.DayOfWeek;
+            
         }
+
     }
 }
