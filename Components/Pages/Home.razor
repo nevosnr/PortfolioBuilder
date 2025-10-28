@@ -4,25 +4,40 @@
 
 <MudText Class="pa-5" Align="Align.Center" Typo="Typo.h3">Welcome to my Portfolio Site</MudText>
 
-<MudPaper Class="pa-5" Elevation="2">
-	<MudText Typo="Typo.body1">
-		This 'portfolio' site aims to showcase my developing skills in the C# ecosystem as well as other projects that have piqued my interest in the past.
-		I am focusing my skillset in C# at present as future me will be exploring opportunites in enterprise development where the microsoft ecosystem in found in abundance.
-		Through academic study and personal projects (including the MOD JHub scheme) I have built an awareness of many programming langauges including
-	</MudText>
-	<MudText Class="pa-5">
-		<ul>
-			<li>Python 2.7 and 3.x - through my current assignment and that of instructor at RAF COS</li>
-			<li>Power Platform Devleoper (PowerApps, PowerBi, PowerAutomate) - through my current assignment</li>
-			<li>JAVA - through the Software Architecture Module for BSc(Hons) Computer Science</li>
-			<li>React Native - through the Mobile Computing Module for BSc(Hons) Computer Science</li>
-			<li>C# and .NET Core - through the Final Project Module for BSc(Hons) Computer Science</li>
-			<li>ROS2 and Python - through the Robotics Module for BSc(Hons) Computer Science</li>
-			<li>Unity 6 Game Engine - A personal journey started during the COVID lockdown</li>
-			<li>PL/SQL - through previous assignments at RAF HWC and RAF WAD</li>
-		</ul>
-	</MudText>
-</MudPaper>
+<MudContainer Class="pa-5">
+	<MudGrid>
+		<MudItem Class="align-content-center" xs="6">
+			<MudPaper>
+				<MudText Typo="Typo.body1">
+					This 'portfolio' site aims to showcase my developing skills in the C# ecosystem as well as other projects that have piqued my interest in the past.
+					I am focusing my skillset in C# at present as future me will be exploring opportunites in enterprise development where the microsoft ecosystem in found in abundance.
+					Through academic study and personal projects (including the MOD JHub scheme) I have built an awareness of many programming langauges including
+				</MudText>
+			</MudPaper>
+		</MudItem>
+		<MudItem xs="6">
+			<MudPaper>
+				<MudText Class="pa-5">
+					<ul>
+						<li>Python 2.7 and 3.x - through my current assignment and that of instructor at RAF COS</li>
+						<li>Power Platform Devleoper (PowerApps, PowerBi, PowerAutomate) - through my current assignment</li>
+						<li>JAVA - through the Software Architecture Module for BSc(Hons) Computer Science</li>
+						<li>React Native - through the Mobile Computing Module for BSc(Hons) Computer Science</li>
+						<li>C# and .NET Core - through the Final Project Module for BSc(Hons) Computer Science</li>
+						<li>ROS2 and Python - through the Robotics Module for BSc(Hons) Computer Science</li>
+						<li>Unity 6 Game Engine - A personal journey started during the COVID lockdown</li>
+						<li>PL/SQL - through previous assignments at RAF HWC and RAF WAD</li>
+					</ul>
+				</MudText>
+			</MudPaper>
+		</MudItem>
+		<MudItem xs="12">
+			<MudPaper>
+				<MudChart Width="360px" Height="360px" ChartType="ChartType.Pie"/>
+			</MudPaper>
+		</MudItem>
+	</MudGrid>
+</MudContainer>
 <MudDivider/>
 <MudPaper Class="pa-5" Elevation="3">
 	<MudText Align="Align.Center" Typo="Typo.body2">

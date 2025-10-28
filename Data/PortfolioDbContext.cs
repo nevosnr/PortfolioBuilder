@@ -24,6 +24,16 @@ namespace PortfolioBuilder.Data
                 entity.Property(e => e.careerStateDate).IsRequired();
                 entity.Property(e => e.careerEndDate);
             });
+
+            model.Entity<Models.EventRecord>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.title).IsRequired().HasMaxLength(150);
+                entity.Property(e => e.startTime).IsRequired();
+                entity.Property(e => e.endTime);
+                entity.Property(e => e.details);
+            });
             OnModelCreatingPartial(model);
         }
         partial void OnModelCreatingPartial(ModelBuilder model);
