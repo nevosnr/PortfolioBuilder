@@ -1,5 +1,7 @@
 ﻿@page "/calendar"
 
+<PageTitle>Events Calendar</PageTitle>
+
 <MudText Typo="Typo.h3"><strong>@monthName, @year</strong></MudText>
 
 <MudButtonGroup Class="pa-5">
@@ -26,6 +28,11 @@
 				<div class="calendar-grid-div @(isToday?"today":"")">
 					@i
 					<MudPaper Class="px-1">card</MudPaper>
+					@*
+						TODO: Create Dynamic content - replace MudPaper above
+						show card title only.
+						onCLick to update the event details below calendar.
+					*@
 				</div>
 			}
 		</MudPaper>
