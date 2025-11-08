@@ -24,6 +24,10 @@ This is module 1b of a JHub exercise, using open API to provide 'live' data. usi
 
 The aspiration was to create a visual representation of all crimes and locations through the open maps API. however the geo data for each police force was too great for the request so kept failing. A future option could be to square off the boundaries and reduce the lat long data at the cost of reduced accuracy. 
 
+## Calendar
+
+This page is showing off a mix of MudBlazor components and HTML to provide the user with a navigable calendar view, below which the user will be able to view further details on an event that is held on the calendar. The data is again stored within the SQL instance on Azure built using the EF Core ORM to create entities and DTOs. This is also a further example of utilising the code-first design, where EF Core has been used to create the models and migrated to the database schema.
+
 ## Other pages.
 
 As the application grows I will aim to show off more elements within .Net and my skill in its use. I predominantly work from text book and seek to understand the code rather than follow the current trend of vibe coding. 
