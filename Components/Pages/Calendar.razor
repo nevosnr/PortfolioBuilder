@@ -1,0 +1,67 @@
+﻿@page "/calendar"
+
+<PageTitle>Events Calendar</PageTitle>
+
+<MudText Typo="Typo.h3"><strong>@monthName, @year</strong></MudText>
+
+<MudButtonGroup Class="pa-5">
+	<MudIconButton @onclick="() => { monthsAway--; CreateMonth(); }" Icon="@Icons.Material.TwoTone.SkipPrevious"></MudIconButton>
+	<MudIconButton @onclick="() => { monthsAway = 0; CreateMonth(); }" Icon="@Icons.Material.TwoTone.StickyNote2"></MudIconButton>
+	<MudIconButton @onclick="() => { monthsAway++; CreateMonth(); }" Icon="@Icons.Material.TwoTone.SkipNext"></MudIconButton>
+</MudButtonGroup>
+<MudGrid >
+	<MudItem xs="12">
+		<MudPaper Elevation="5" class="calendar-grid calendar-grid-bg">
+			@foreach (var day in Enum.GetValues<DayOfWeek>())
+			{
+
+				<div class="calendar-grid-header">@day</div>
+			}
+			@for (int i = 0; i < numBlankColumns; i++)
+			{
+				<div class="calendar-grid-div"></div>
+			}
+			@for (int i = 1; i <= monthEnd.Day; i++)
+			{
+				var today = DateTime.Today;
+				bool isToday = today.Day == i && today.Month == monthStart.Month && today.Year == monthStart.Year;
+				<div class="calendar-grid-div @(isToday?"today":"")">
+					@i
+					<MudPaper Class="px-1">card</MudPaper>
+					@*
+						TODO: Create Dynamic content - replace MudPaper above
+						show card title only.
+						onCLick to update the event details below calendar.
+					*@
+				</div>
+			}
+		</MudPaper>
+	</MudItem>
+	<MudItem>
+		<MudPaper Elevation="5">
+			<MudForm Class="pa-2">
+				<MudGrid>
+					<MudItem xs="12">
+						<MudText Typo="Typo.h4">Event Details: @textValue</MudText>
+					</MudItem>
+					<MudItem xs="6">
+						<MudTextField @bind-Value="textValue" Label="Event Title" Variant="Variant.Outlined" />
+					</MudItem>
+					<MudItem xs="3">
+						<MudTextField T="DateTime?" @bind-Value="dateValue" Label="Start Date" Variant="Variant.Outlined" />
+					</MudItem>
+					<MudItem xs="3">
+						<MudTextField T="DateTime?" @bind-Value="dateValue" Label="End Date" Variant="Variant.Outlined" />
+					</MudItem>
+					<MudItem xs="12">
+						<MudTextField @bind-Value="textValue" Label="Event Description" Variant="Variant.Outlined" AutoGrow Lines="5" MaxLines="7" />
+					</MudItem>
+				</MudGrid>
+			</MudForm>
+		</MudPaper>
+	</MudItem>
+</MudGrid>
+
+
+
+
